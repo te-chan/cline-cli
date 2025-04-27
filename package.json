@@ -1,8 +1,8 @@
 {
-	"name": "cline-cli",
+	"name": "@yaegaki/cline-cli",
 	"displayName": "Cline-CLI",
 	"description": "Cline-CLI is a command line interface for Cline, a powerful AI assistant for developers.",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"license": "Apache-2.0",
 	"categories": [
 		"AI",
@@ -13,7 +13,7 @@
 		"Testing"
 	],
 	"activationEvents": [],
-	"main": "./dist/main.js",
+	"files": ["dist"],
 	"scripts": {
 		"build": "node build.js"
 	},
@@ -103,5 +103,14 @@
 		"vscode-uri": "^3.1.0",
 		"web-tree-sitter": "^0.22.6",
 		"zod": "^3.24.2"
-	}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/yaegaki/cline-cli.git"
+	},
+	"author": "yaegaki",
+	"bugs": {
+		"url": "https://github.com/yaegaki/cline-cli/issues"
+	},
+	"homepage": "https://github.com/yaegaki/cline-cli"
 }
