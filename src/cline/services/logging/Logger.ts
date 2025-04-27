@@ -1,4 +1,4 @@
-import type { OutputChannel } from "vscode-interface"
+import type { OutputChannel } from "vscode"
 import { ErrorService } from "../error/ErrorService"
 
 /**

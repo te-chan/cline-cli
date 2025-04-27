@@ -1,4 +1,4 @@
-import * as vscode from "vscode-interface"
+import * as vscode from "vscode"
 
 /**
  * Gets the contents of the active terminal

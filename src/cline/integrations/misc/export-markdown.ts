@@ -1,7 +1,7 @@
 import { Anthropic } from "@anthropic-ai/sdk"
 import os from "os"
 import * as path from "path"
-import * as vscode from "vscode-interface"
+import * as vscode from "vscode"
 
 export async function downloadTask(dateTs: number, conversationHistory: Anthropic.MessageParam[]) {
 	// File name

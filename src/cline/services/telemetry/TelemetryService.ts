@@ -1,7 +1,9 @@
-import * as vscode from "vscode-interface"
+import { PostHog } from "posthog-node"
+import * as vscode from "vscode"
+import { version as extensionVersion } from "../../../package.json"
 
-import type { TaskFeedbackType } from "../../shared/WebviewMessage"
-import type { BrowserSettings } from "../../shared/BrowserSettings"
+import type { TaskFeedbackType } from "@shared/WebviewMessage"
+import type { BrowserSettings } from "@shared/BrowserSettings"
 
 /**
  * PostHogClient handles telemetry event tracking for the Cline extension
@@ -77,16 +79,24 @@ class PostHogClient {
 
 	/** Singleton instance of the PostHogClient */
 	private static instance: PostHogClient
+	/** PostHog client instance for sending analytics events */
+	private client: PostHog
 	/** Unique identifier for the current VSCode instance */
 	private distinctId: string = vscode.env.machineId
 	/** Whether telemetry is currently enabled based on user and VSCode settings */
 	private telemetryEnabled: boolean = false
+	/** Current version of the extension */
+	private readonly version: string = extensionVersion
 
 	/**
 	 * Private constructor to enforce singleton pattern
 	 * Initializes PostHog client with configuration
 	 */
 	private constructor() {
+		this.client = new PostHog("phc_qfOAGxZw2TL5O8p9KYd9ak3bPBFzfjC8fy5L6jNWY7K", {
+			host: "https://us.i.posthog.com",
+			enableExceptionAutocapture: false,
+		})
 	}
 
 	/**
@@ -96,6 +106,22 @@ class PostHogClient {
 	 */
 	public updateTelemetryState(didUserOptIn: boolean): void {
 		this.telemetryEnabled = false
+
+		// First check global telemetry level - telemetry should only be enabled when level is "all"
+		const telemetryLevel = vscode.workspace.getConfiguration("telemetry").get<string>("telemetryLevel", "all")
+		const globalTelemetryEnabled = telemetryLevel === "all"
+
+		// We only enable telemetry if global vscode telemetry is enabled
+		if (globalTelemetryEnabled) {
+			this.telemetryEnabled = didUserOptIn
+		}
+
+		// Update PostHog client state based on telemetry preference
+		if (this.telemetryEnabled) {
+			this.client.optIn()
+		} else {
+			this.client.optOut()
+		}
 	}
 
 	/**
@@ -114,6 +140,15 @@ class PostHogClient {
 	 * @param event The event to capture with its properties
 	 */
 	public capture(event: { event: string; properties?: any }): void {
+		// Only send events if telemetry is enabled
+		if (this.telemetryEnabled) {
+			// Include extension version in all event properties
+			const propertiesWithVersion = {
+				...event.properties,
+				extension_version: this.version,
+			}
+			this.client.capture({ distinctId: this.distinctId, event: event.event, properties: propertiesWithVersion })
+		}
 	}
 
 	// Task events
@@ -562,6 +597,7 @@ class PostHogClient {
 	}
 
 	public async shutdown(): Promise<void> {
+		await this.client.shutdown()
 	}
 }
 

@@ -2,9 +2,9 @@ import fs from "fs/promises"
 import os from "os"
 import * as path from "path"
 import simpleGit, { SimpleGit } from "simple-git"
-import * as vscode from "vscode-interface"
-import { Controller as ClineProvider } from "../../core/controller"
-import { fileExistsAtPath } from "../../utils/fs"
+import * as vscode from "vscode"
+import { Controller as ClineProvider } from "@core/controller"
+import { fileExistsAtPath } from "@utils/fs"
 import { globby } from "globby"
 
 class CheckpointTracker {

@@ -1,4 +1,4 @@
-import { Uri, Webview } from "vscode-interface"
+import { Uri, Webview } from "vscode"
 /**
  * A helper function which will get the webview URI of a given file or resource.
  *

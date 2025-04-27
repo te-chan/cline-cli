@@ -1,4 +1,4 @@
-import * as vscode from "vscode-interface"
+import * as vscode from "vscode"
 import * as path from "path"
 import deepEqual from "fast-deep-equal"
 

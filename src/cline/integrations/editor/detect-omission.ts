@@ -1,4 +1,4 @@
-import * as vscode from "vscode-interface"
+import * as vscode from "vscode"
 
 /**
  * Detects potential AI-generated code omissions in the given file content.

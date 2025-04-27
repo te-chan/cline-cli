@@ -2,7 +2,7 @@ import { readFile } from "fs/promises"
 import { describe, it, after } from "mocha"
 import path from "path"
 import "should"
-import * as vscode from "vscode-interface"
+import * as vscode from "vscode"
 
 const packagePath = path.join(__dirname, "..", "..", "package.json")
 

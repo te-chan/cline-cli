@@ -1,6 +1,6 @@
 import { mkdir, access, constants } from "fs/promises"
 import * as path from "path"
-import * as vscode from "vscode-interface"
+import * as vscode from "vscode"
 import os from "os"
 
 /**

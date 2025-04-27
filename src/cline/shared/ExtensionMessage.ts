@@ -6,9 +6,10 @@ import { AutoApprovalSettings } from "./AutoApprovalSettings"
 import { BrowserSettings } from "./BrowserSettings"
 import { ChatSettings } from "./ChatSettings"
 import { HistoryItem } from "./HistoryItem"
-import { McpServer, McpMarketplaceCatalog, McpMarketplaceItem, McpDownloadResponse, McpViewTab } from "./mcp"
+import { McpServer, McpMarketplaceCatalog, McpDownloadResponse, McpViewTab } from "./mcp"
 import { TelemetrySetting } from "./TelemetrySetting"
 import type { BalanceResponse, UsageTransaction, PaymentTransaction } from "../shared/ClineAccount"
+import { ClineRulesToggles } from "./cline-rules"
 
 // webview will hold state
 export interface ExtensionMessage {
@@ -43,7 +44,6 @@ export interface ExtensionMessage {
 		| "totalTasksSize"
 		| "addToInput"
 		| "browserConnectionResult"
-		| "detectedChromePath"
 		| "scrollToSettings"
 		| "browserRelaunchResult"
 		| "relativePathsResponse" // Handles single and multiple path responses
@@ -57,9 +57,9 @@ export interface ExtensionMessage {
 		| "settingsButtonClicked"
 		| "historyButtonClicked"
 		| "didBecomeVisible"
-		| "accountLoginClicked"
 		| "accountLogoutClicked"
 		| "accountButtonClicked"
+		| "focusChatInput"
 	invoke?: Invoke
 	state?: ExtensionState
 	images?: string[]
@@ -146,6 +146,8 @@ export interface ExtensionState {
 	}
 	version: string
 	vscMachineId: string
+	globalClineRulesToggles: ClineRulesToggles
+	localClineRulesToggles: ClineRulesToggles
 }
 
 export interface ClineMessage {
@@ -179,6 +181,7 @@ export type ClineAsk =
 	| "browser_action_launch"
 	| "use_mcp_server"
 	| "new_task"
+	| "condense"
 
 export type ClineSay =
 	| "task"

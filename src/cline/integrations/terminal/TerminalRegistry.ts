@@ -1,4 +1,4 @@
-import * as vscode from "vscode-interface"
+import * as vscode from "vscode"
 
 export interface TerminalInfo {
 	terminal: vscode.Terminal

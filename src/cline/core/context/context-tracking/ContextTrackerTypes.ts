@@ -1,5 +1,3 @@
-import * as vscode from "vscode-interface"
-
 // Type definitions for FileContextTracker
 export interface FileMetadataEntry {
 	path: string
