@@ -1,6 +1,6 @@
 # Cline-CLI
 
-Cline-CLI is a command line interface for Cline, a powerful AI assistant for developers.
+Cline-CLI is a command line interface for [Cline](https://github.com/cline/cline), a powerful AI assistant for developers.
 
 ## ⚠️ Development Status
 
