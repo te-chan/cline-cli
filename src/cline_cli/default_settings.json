@@ -36,10 +36,10 @@
         "autoApprovalSettings": {
             "enabled": true,
             "actions": {
-                "readFiles": false,
-                "editFiles": false,
-                "executeSafeCommands": false,
-                "useMcp": false
+                "readFiles": true,
+                "editFiles": true,
+                "executeSafeCommands": true,
+                "useMcp": true
             },
             "maxRequests": 20
         }
