@@ -44,6 +44,7 @@ program
 
 program
     .command("init")
+    .description("Initialize Cline CLI with default settings")
     .option("--settings <path>", "Path to the settings file", "~/.cline_cli/cline_cli_settings.json")
     .option("--storage <path>", "Path to the storage folder", "~/.cline_cli/storage")
     .action((opts: OptionValues) => {
@@ -63,6 +64,7 @@ program
 
 program
     .command("task")
+    .description("Execute a task with Cline AI assistant")
     .argument("[task]", "Task to start, or input from standard input if not specified")
     .option("--settings <path>", "Path to the settings file", "~/.cline_cli/cline_cli_settings.json")
     .option("--workspace <path>", "Path to the workspace folder")
