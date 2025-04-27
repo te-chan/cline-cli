@@ -6,6 +6,8 @@ Cline-CLI is a command line interface for Cline, a powerful AI assistant for dev
 
 **Note:** This project is currently under development and is not recommended for production use. Features may change, and stability is not guaranteed.
 
+Currently, `browser_action` and `execute_command` tools are not supported in Cline-CLI.
+
 ## Installation
 
 You can install Cline-CLI using npm:
