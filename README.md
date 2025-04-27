@@ -18,6 +18,19 @@ npm install -g @yaegaki/cline-cli
 
 After installation, the `cline-cli` command will be available in your terminal.
 
+Alternatively, you can use `npx` to run Cline-CLI without installing it globally:
+
+```bash
+# Create settings files
+npx -y @yaegaki/cline-cli init
+
+# Edit the Cline-CLI settings file to configure API providers and other options
+vim ~/.cline_cli/cline_cli_settings.json
+
+# Run a task with Cline-CLI by providing your task description
+API_KEY=YOUR_API_KEY npx -y @yaegaki/cline-cli task "your task description"
+```
+
 ## Usage
 
 ### Initialization
@@ -232,6 +245,7 @@ This will wait for you to input a task description.
 ### Additional Options
 
 - `--full-auto`: Run in fully automated mode
+- `--auto-approve-mcp`: Automatically approve all MCP tool usage requests, including those that normally require explicit confirmation
 - `--custom-instructions`: Provide custom instructions for the task
 - `--workspace`: Specify a custom workspace directory path
 
