@@ -24,6 +24,9 @@
 	"bin": {
 		"cline-cli": "./dist/main.js"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.12",
 		"@types/chai": "^5.0.1",
