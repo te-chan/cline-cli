@@ -13,11 +13,11 @@ import { TaskController } from "./taskController"
 import * as console from "./console"
 
 executeCommand({
-    init: executeInitComand,
+    init: executeInitCommand,
     task: executeTaskCommand
 })
 
-async function executeInitComand(options: InitCommandOptions) {
+async function executeInitCommand(options: InitCommandOptions) {
     initSettings(options.settings)
     const mcpSettingsPath = await initMcpSettings(options.storage)
 
@@ -31,10 +31,10 @@ async function executeTaskCommand(options: TaskCommandOptions) {
     context.setGlobalState(settings.globalState)
     vsCodeImpls.workspace.setRootConfiguration(settings.settings)
 
-    const taskController = new TaskController(context, options.forceApprovalUseMcp)
+    const taskController = new TaskController(context, options.autoApproveMcp)
 
-    if (options.customInstractions) {
-        taskController.setCustomInstructions(options.customInstractions)
+    if (options.customInstructions) {
+        taskController.setCustomInstructions(options.customInstructions)
     }
 
     if (options.fullAuto) {
@@ -42,9 +42,9 @@ async function executeTaskCommand(options: TaskCommandOptions) {
     }
 
     if (options.task) {
-        // cline-cli task "hoge" # always start a new task.
-        // cline-cli task "hoge" --resume # resume task if exists.
-        // cline-cli task "hoge" --resume-or-new # if the task exists, resume it; if not, start a new task.
+        // cline-cli task "example" # always start a new task.
+        // cline-cli task "example" --resume # resume task if it exists.
+        // cline-cli task "example" --resume-or-new # if the task exists, resume it; if not, start a new task.
         if (options.resumeOrNew) {
             taskController.resumeOrStartNewTask(options.task)
         }

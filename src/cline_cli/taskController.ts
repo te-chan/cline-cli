@@ -122,7 +122,7 @@ export class TaskController {
         })
 
         process.on("unhandledRejection", err => {
-            // prevent exit before writing file 
+            // prevent process exit before writing file is complete
             if (this._isAborting) {
                 return
             }
@@ -224,8 +224,8 @@ export class TaskController {
     private async resumeTaskInternal(task: string, autoStartNewTask: boolean) {
         this._task = task
         const taskHistory = await this.loadTaskHistoryFromFile()
-        const hisotryItem = taskHistory?.reverse()?.find(x => x.task === task)
-        if (!hisotryItem) {
+        const historyItem = taskHistory?.reverse()?.find(x => x.task === task)
+        if (!historyItem) {
             this._readline.write("No task found, start a new task.\n\n")
             this.startNewTask(task)
             return
@@ -236,7 +236,7 @@ export class TaskController {
         
         this.emitMessageToExtension({
             type: "showTaskWithId",
-            text: hisotryItem.id,
+            text: historyItem.id,
         })
     }
 
@@ -246,7 +246,7 @@ export class TaskController {
 
 
         if (message.ask === "resume_task") {
-            // When you cancel a task, cline will ask resume_task.
+            // When a task is canceled, cline will ask if you want to resume the task.
             if (this._isAborting) {
                 this.exit(-1)
                 return
@@ -292,7 +292,7 @@ export class TaskController {
                 return undefined
             }
 
-            const fullAutoModeMessage = "I can't response because I'm in full auto mode.\nIf you already have a task completion, use the attempt_completion tool without command."
+            const fullAutoModeMessage = "I can't respond because I'm in full auto mode.\nIf you already have a task completion, use the attempt_completion tool without command."
             this.emitMessageToExtension({
                 type: "askResponse",
                 askResponse: "messageResponse",
@@ -324,7 +324,7 @@ export class TaskController {
         }
 
         if (this._lastMessage.ts === this._askingMessageTs) {
-            // already asked
+            // this question has already been asked
             return
         }
 
@@ -570,7 +570,7 @@ export class TaskController {
     private async exit(code: number = 0) {
         const taskHistory = await this._context.globalState.get<HistoryItem[] | undefined>("taskHistory")
         if (taskHistory) {
-            this.writeTaskHisotry(taskHistory)
+            this.writeTaskHistory(taskHistory)
         }
 
         process.exit(code)
@@ -590,7 +590,7 @@ export class TaskController {
         }
     }
 
-    private writeTaskHisotry(taskHistory: HistoryItem[]) {
+    private writeTaskHistory(taskHistory: HistoryItem[]) {
         const json = JSON.stringify(taskHistory)
 
         const path = this.getTaskHistoryPath()

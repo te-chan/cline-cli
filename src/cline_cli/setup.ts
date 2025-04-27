@@ -22,8 +22,8 @@ export type TaskCommandOptions = {
     settings: vscode.Uri
     storage: vscode.Uri
     task?: string
-    customInstractions?: string
-    forceApprovalUseMcp: boolean
+    customInstructions?: string
+    autoApproveMcp: boolean
     fullAuto: boolean
     resume: boolean
     resumeOrNew: boolean
@@ -39,7 +39,7 @@ let executeCommandImpl: (handlers: CommandHandlers) => Promise<void> = async () 
 export let vsCodeImpls: ReturnType<typeof createVsCodeImpls>
 
 program
-    .description("CLI for Cline")
+    .description("Command Line Interface for Cline AI Assistant")
     .version("0.0.1")
 
 program
@@ -69,12 +69,12 @@ program
     .option("--settings <path>", "Path to the settings file", "~/.cline_cli/cline_cli_settings.json")
     .option("--workspace <path>", "Path to the workspace folder")
     .option("--storage <path>", "Path to the storage folder", "~/.cline_cli/storage")
-    .option("--custom-instructions <string>", "custom instructions")
-    .option("--visible-files <string...>", "visible files")
-    .option("--full-auto", "automatically respond to asks")
-    .option("--force-approval-use-mcp", "force approval use mcp")
-    .option("--resume", "resume task if exists incomplete task")
-    .option("--resume-or-new", "if exists incomplete task, resume it, otherwise create a new task")
+    .option("--custom-instructions <string>", "provide custom instructions for the AI assistant")
+    .option("--visible-files <string...>", "specify files that should be visible to the AI assistant")
+    .option("--full-auto", "automatically respond to requests from the AI assistant")
+    .option("--auto-approve-mcp", "automatically approve all MCP tool usage requests, including those that normally require explicit confirmation")
+    .option("--resume", "resume an existing incomplete task")
+    .option("--resume-or-new", "resume an existing incomplete task if one exists, otherwise create a new task")
     .action((task: string | undefined, opts: OptionValues) => {
         commandType = CommandType.Task
 
@@ -82,8 +82,8 @@ program
             settings: getSettingsPath(opts.settings),
             storage: getStoragePath(opts.storage),
             task: task,
-            customInstractions: opts.customInstructions,
-            forceApprovalUseMcp: !!opts.forceApprovalUseMcp,
+            customInstructions: opts.customInstructions,
+            autoApproveMcp: !!opts.autoApproveMcp,
             fullAuto: !!opts.fullAuto,
             resume: !!opts.resume,
             resumeOrNew: !!opts.resumeOrNew,
@@ -120,7 +120,7 @@ function getWorkspacePath(workspace?: string): vscode.Uri {
     return vscode.Uri.file(process.cwd())
 }
 
-function setupVsCode( workspacePath: vscode.Uri, visibleFiles: string[]) {
+function setupVsCode(workspacePath: vscode.Uri, visibleFiles: string[]) {
     const vsCodeImpls = createVsCodeImpls({
         workspacePath: workspacePath,
         visibleFiles: visibleFiles,
