@@ -14,7 +14,8 @@
 	],
 	"activationEvents": [],
 	"files": [
-		"dist"
+		"dist/main.js",
+		"THIRD_PARTY_NOTICES"
 	],
 	"scripts": {
 		"build": "node build.js",
