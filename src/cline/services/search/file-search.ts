@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import * as path from "path"
 import * as fs from "fs"
 import * as childProcess from "child_process"

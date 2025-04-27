@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach } from "mocha"
 import { expect } from "chai"
 import * as sinon from "sinon"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { ModelContextTracker } from "./ModelContextTracker"
 import * as diskModule from "@core/storage/disk"
 import type { TaskMetadata } from "./ContextTrackerTypes"

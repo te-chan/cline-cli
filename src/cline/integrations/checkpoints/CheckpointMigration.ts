@@ -1,6 +1,6 @@
 import fs from "fs/promises"
 import * as path from "path"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { fileExistsAtPath } from "@utils/fs"
 
 /**

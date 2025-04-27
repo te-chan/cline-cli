@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { userInfo } from "os"
 
 const SHELL_PATHS = {

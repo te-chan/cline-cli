@@ -1,5 +1,7 @@
 import * as vscode from "vscode-interface"
+import * as webview from "./webview"
 import * as cline from "cline/exports"
+import { TaskServiceClient } from "./grpc-client"
 import { ClineAPI } from "cline/exports/cline"
 import { WebviewProvider } from "cline/core/webview"
 import { WebviewImpl, WebviewViewImpl } from "./webviewImpl"
@@ -50,6 +52,7 @@ export class TaskController {
 
         const sidebarWebview = new WebviewProvider(context, outputChannel)
         this._webview = new WebviewImpl()
+        webview.setWebview(this._webview)
         const webviewView = new WebviewViewImpl(this._webview)
         sidebarWebview.resolveWebviewView(webviewView)
         this._clineAPI = cline.createClineAPI(outputChannel, sidebarWebview.controller)
@@ -146,9 +149,7 @@ export class TaskController {
         this._isAborting = true
         this._readline.write("\n\naborting...")
 
-        this.emitMessageToExtension({
-            type: "cancelTask",
-        })
+        TaskServiceClient.cancelTask({})
 
         await sleep(3000)
         this.exit(exitCode)

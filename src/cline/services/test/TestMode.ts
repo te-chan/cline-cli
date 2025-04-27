@@ -3,7 +3,7 @@
  * This provides a centralized way to check if the extension is running in test mode
  * instead of relying on process.env which may not be consistent across different parts of the extension
  */
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import * as fs from "fs"
 import * as path from "path"
 import { Logger } from "../logging/Logger"

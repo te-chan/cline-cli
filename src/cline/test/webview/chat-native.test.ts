@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { describe, it, beforeEach, afterEach } from "mocha"
 import { strict as assert } from "assert"
 describe("Chat Integration Tests", () => {

@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import * as path from "path"
 import { listFiles } from "@services/glob/list-files"
 import { ExtensionMessage } from "@shared/ExtensionMessage"

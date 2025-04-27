@@ -5,7 +5,7 @@ import { formatResponse } from "@core/prompts/responses"
 import fs from "fs/promises"
 import { ClineRulesToggles } from "@shared/cline-rules"
 import { getGlobalState, getWorkspaceState, updateGlobalState, updateWorkspaceState } from "@core/storage/state"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 
 export const getGlobalClineRules = async (globalClineRulesFilePath: string, toggles: ClineRulesToggles) => {
 	if (await fileExistsAtPath(globalClineRulesFilePath)) {

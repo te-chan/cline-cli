@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import fs from "fs/promises"
 import * as path from "path"
 

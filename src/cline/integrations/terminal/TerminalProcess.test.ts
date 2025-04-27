@@ -2,7 +2,7 @@ import { describe, it, beforeEach, afterEach } from "mocha"
 import "should"
 import * as sinon from "sinon"
 import { TerminalProcess } from "./TerminalProcess"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { TerminalRegistry } from "./TerminalRegistry"
 
 declare module "vscode" {

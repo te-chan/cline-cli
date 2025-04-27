@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { Controller } from "@core/controller"
 import { ClineAPI } from "./cline"
 import { getGlobalState } from "@core/storage/state"

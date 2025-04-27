@@ -1,5 +1,5 @@
 import axios from "axios"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { getNonce } from "./getNonce"
 import { getUri } from "./getUri"
 import { getTheme } from "@integrations/theme/getTheme"

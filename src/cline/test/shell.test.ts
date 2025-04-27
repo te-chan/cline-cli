@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach } from "mocha"
 import { expect } from "chai"
 import { getShell } from "@utils/shell"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { userInfo } from "os"
 
 describe("Shell Detection Tests", () => {

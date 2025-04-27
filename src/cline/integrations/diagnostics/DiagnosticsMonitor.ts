@@ -1,5 +1,5 @@
 /*
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import deepEqual from "fast-deep-equal"
 
 type FileDiagnostics = [vscode.Uri, vscode.Diagnostic[]][]

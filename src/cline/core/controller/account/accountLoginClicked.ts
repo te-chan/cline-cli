@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import crypto from "crypto"
 import { Controller } from "../index"
 import { storeSecret } from "../../storage/state"

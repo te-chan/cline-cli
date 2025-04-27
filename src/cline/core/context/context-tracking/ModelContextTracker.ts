@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { getTaskMetadata, saveTaskMetadata } from "@core/storage/disk"
 
 export class ModelContextTracker {

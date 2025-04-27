@@ -1,6 +1,6 @@
 import * as path from "path"
 import os from "os"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 
 /*
 The Node.js 'path' module resolves and normalizes paths differently depending on the platform:

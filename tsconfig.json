@@ -23,6 +23,29 @@
     "strict": true,
     "target": "es2022",
     "useDefineForClassFields": true,
+    "paths": {
+      "@/*": [
+        "cline/*"
+      ],
+      "@api/*": [
+        "cline/api/*"
+      ],
+      "@core/*": [
+        "cline/core/*"
+      ],
+      "@integrations/*": [
+        "cline/integrations/*"
+      ],
+      "@services/*": [
+        "cline/services/*"
+      ],
+      "@shared/*": [
+        "cline/shared/*"
+      ],
+      "@utils/*": [
+        "cline/utils/*"
+      ]
+    },
     "useUnknownInCatchVariables": false
   },
-  }
+}

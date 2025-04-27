@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 
 /*
 Used to get user's current python environment (unnecessary now that we use the IDE's terminal)

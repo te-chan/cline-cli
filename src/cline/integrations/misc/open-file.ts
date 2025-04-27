@@ -1,6 +1,6 @@
 import * as path from "path"
 import * as os from "os"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { arePathsEqual } from "@utils/path"
 
 export async function openImage(dataUri: string) {

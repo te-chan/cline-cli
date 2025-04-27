@@ -1,5 +1,5 @@
 import * as path from "path"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { execa } from "execa"
 import { Logger } from "@services/logging/Logger"
 import { WebviewProvider } from "@core/webview"

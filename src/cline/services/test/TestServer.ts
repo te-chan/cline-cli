@@ -1,5 +1,5 @@
 import * as http from "http"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import * as path from "path"
 import { execa } from "execa"
 import { Logger } from "@services/logging/Logger"

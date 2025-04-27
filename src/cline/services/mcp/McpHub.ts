@@ -12,7 +12,7 @@ import { setTimeout as setTimeoutPromise } from "node:timers/promises"
 import deepEqual from "fast-deep-equal"
 import * as fs from "fs/promises"
 import * as path from "path"
-import * as vscode from "vscode"
+import * as vscode from "vscode-interface"
 import { z } from "zod"
 import {
 	DEFAULT_MCP_TIMEOUT_SECONDS,
